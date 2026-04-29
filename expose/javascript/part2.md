@@ -32,3 +32,46 @@ The function returns `[50, 100, 150]`. Same result as question 4. `discounted` a
 
 ## Question 11
 The function returns `[50, 100, 150]`. `discounted` is declared with `const` as an empty array, but `const` only prevents reassignment — you can still modify the array's contents with `.push()`. The loop pushes each discounted price, and line 14 returns the array.
+
+## Question 12
+A. `student.name`
+B. `student['Grad Year']`
+C. `student.greeting()`
+D. `student['Favorite Teacher'].name`
+E. `student.courseLoad[0]`
+
+## Question 13 — Arithmetic
+
+A. `'32'` — `+` with a string concatenates, so `2` becomes `'2'` and the result is `'32'`.
+B. `1` — `-` only works with numbers, so `'3'` becomes `3`, and `3 - 2 = 1`.
+C. `3` — `null` converts to `0`, so `3 + 0 = 3`.
+D. `'3null'` — `+` with a string concatenates, so `null` becomes `'null'`, giving `'3null'`.
+E. `4` — `true` converts to `1`, so `1 + 3 = 4`.
+F. `0` — `false` converts to `0`, `null` converts to `0`, so `0 + 0 = 0`.
+G. `'3undefined'` — `+` with a string concatenates, so `undefined` becomes `'undefined'`, giving `'3undefined'`.
+H. `NaN` — `-` converts both to numbers. `'3'` becomes `3`, `undefined` becomes `NaN`. Any arithmetic with `NaN` gives `NaN`.
+
+## Question 14 — Comparison
+
+A. `true` — `'2'` is converted to the number `2`, and `2 > 1` is `true`.
+B. `false` — Both are strings, so they're compared character by character. `'2'` (char code 50) is greater than `'1'` (char code 49), so `'2' < '12'` is `false`.
+C. `true` — `==` does type conversion, so `'2'` becomes `2`, and `2 == 2` is `true`.
+D. `false` — `===` does no type conversion. `2` is a number and `'2'` is a string, so they're not strictly equal.
+E. `false` — `==` converts `true` to `1`, and `1 == 2` is `false`.
+F. `true` — `Boolean(2)` is `true`, and `true === true` is `true` (same type, same value).
+
+## Question 15
+
+`==` (loose equality) compares values after performing type conversion, so `'3' == 3` is `true` because the string is converted to a number before comparing. `===` (strict equality) compares both value AND type with no conversion, so `'3' === 3` is `false` because one is a string and the other is a number. You should generally use `===` to avoid unexpected type coercion bugs.
+
+## Question 17
+The result is `[2, 4, 6]`. The function `modifyArray` loops through each element of the array and calls the `callback` function (which is `doSomething`) on each one. `doSomething` multiplies the number by 2. So: `1 * 2 = 2`, `2 * 2 = 4`, `3 * 2 = 6`. Each result is pushed to `newArr`, which is returned as `[2, 4, 6]`.
+
+## Question 19
+The output is:
+1
+4
+3
+2
+
+Line 2 prints `1` immediately. Line 3 schedules `2` to print after 1000ms. Line 4 schedules `3` to print after 0ms. Line 5 prints `4` immediately. After the synchronous code finishes, `setTimeout` callbacks run — `3` prints first (0ms delay), then `2` prints last (1000ms delay). Even a 0ms `setTimeout` waits until all synchronous code is done before executing.
